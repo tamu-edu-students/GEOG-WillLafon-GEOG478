@@ -1,24 +1,114 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Tutorial 1</title>  
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    <style> 
-      html, body {
-            height: 100%;
-            margin: 0;
-        }
-        #map {
-            width: 100%;
-            height: 100%;}
-    </style>
-  </head>
-  <body>
-     <div id="map"></div>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaflet Quick Start</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #3d8b3d;
+      color: white;
+      padding: 16px 24px;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    #map {
+      width: 100%;
+      height: calc(100vh - 72px);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍃 Leaflet Quick Start</h1>
+    <p>Interactive map of London — click the map to get coordinates</p>
+  </header>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    // ── 1. Initialize the map, centered on London ──────────────────────────
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    // ── 2. Add OpenStreetMap tile layer ───────────────────────────────────
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // ── 3. Add a marker with a popup ──────────────────────────────────────
+    const marker = L.marker([51.5, -0.09]).addTo(map);
+    marker.bindPopup('<b>Hello world!</b><br>I am a popup.').openPopup();
+
+    // ── 4. Add a red circle ───────────────────────────────────────────────
+    const circle = L.circle([51.508, -0.11], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
+    circle.bindPopup('I am a circle.');
+
+    // ── 5. Add a polygon ──────────────────────────────────────────────────
+    const polygon = L.polygon([
+      [51.509, -0.08],
+      [51.503, -0.06],
+      [51.51,  -0.047]
+    ]).addTo(map);
+    polygon.bindPopup('I am a polygon.');
+
+    // ── 6. Click event — show coordinates in a popup ─────────────────────
+    const popup = L.popup();
+
+    function onMapClick(e) {
+      popup
+        .setLatLng(e.latlng)
+        .setContent('You clicked the map at ' + e.latlng.toString())
+        .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+  </script>
+
+</body>
 </html>
