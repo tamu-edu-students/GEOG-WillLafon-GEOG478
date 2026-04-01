@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Leaflet Choropleth – Working</title>
+  <meta charset="utf-8">
+  <title>Leaflet Choropleth Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
- t: 100%;
-      margin: 0;
+ n: 0;
+      height: 100%;
     }
     #map {
       height: 100%;
@@ -21,48 +21,43 @@
 <body>
 <div id="map"></div>
 
-<!-- ✅ Leaflet JS (MUST be a script tag) -->
-<script src="https://unpkg.com/leaflet@1flet.js</script>
+<!-- ✅ Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.t.js
 
-<!-- ✅ GeoJSON data (MUST be a script tag) -->
-<script src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
+<!-- ✅ US states GeoJSON -->
+<script src="https://leafletjs.com/examples/choropleth/us-states.jscript>
+  console.log("Leaflet loaded:", typeof L);
+  console.log("States data loaded:", typeof statesData);
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  const map = L.map('map').setView([37.8, -96], 4);
 
-  console.log("Leaflet loaded:", typeof L !== "undefined");
-  console.log("States data loaded:", typeof statesData !== "undefined");
-
-  const map = L.map("map").setView([37.8, -96], 4);
-
-  L.tileLayer("https://{s}.tile.openstreetmap 25}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors",
-    maxZoom: 19
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
   function getColor(d) {
-    return d > 1000 ? "#800026" :
-           d > 500  ? "#BD0026" :
-           d > 200  ? "#E31A1C" :
-           d > 100  ? "#FC4E2A" :
-           d > 50   ? "#FD8D3C" :
-           d > 20   ? "#FEB24C" :
-           d > 10   ? "#FED976" :
-                      "#FFEDA0";
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
   }
 
   function style(feature) {
     return {
       fillColor: getColor(feature.properties.density),
       weight: 2,
-      color: "white",
+      color: 'white',
       fillOpacity: 0.7
     };
   }
 
   L.geoJson(statesData, { style }).addTo(map);
-});
 </script>
+
 </body>
 </html>
-``
