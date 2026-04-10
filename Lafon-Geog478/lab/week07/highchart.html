@@ -12,61 +12,61 @@
             height: 400px;
             margin: 0 auto
         }
-</style>
+    </style>
   </head>
   <body>
-     <div id="container"></div>
+    <div id="container"></div>
     <script>
     Highcharts.chart('container', {
-    title: { text: 'Weekly Temperature in College Station' },
-    subtitle: { text: '' },
-    yAxis: {
-        title: { text: 'Temperature (°F)' },
-        min: 40,
-        max: 90,
-        tickInterval: 10
-    },
-    xAxis: {
-        categories: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    },
-    legend: {
-        layout: 'horizontal',
-        align: 'center',
-        verticalAlign: 'bottom'
-    },
-    plotOptions: {
-        series: {
-            label: { connectorAllowed: false },
-            dataLabels: { enabled: true }
-        }
-    },
-    series: [
-        {
-            name: 'Highest',
-            data: [82, 81, 81, 70, 77, 78, 79, 80],
-            color: '#7cb5ec',
-            marker: { symbol: 'circle', fillColor: '#7cb5ec' }
+        title: { text: 'Weekly Temperature in College Station' },
+        subtitle: { text: '' },
+        yAxis: {
+            title: { text: 'Temperature (°F)' },
+            min: 40,
+            max: 90,
+            tickInterval: 10
         },
-        {
-            name: 'Lowest',
-            data: [67, 59, 50, 47, 51, 60, 66, 66],
-            color: '#333333',
-            marker: { symbol: 'diamond', fillColor: '#333333' }
-        }
-    ],
-    responsive: {
-        rules: [{
-            condition: { maxWidth: 500 },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                  </script>
-                }
+        xAxis: {
+            categories: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        },
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+        },
+        plotOptions: {
+            series: {
+                label: { connectorAllowed: false },
+                dataLabels: { enabled: true }
             }
-        }]
-    }
-});
+        },
+        series: [
+            {
+                name: 'Highest',
+                data: [82, 81, 81, 70, 77, 78, 79, 80],
+                color: '#7cb5ec',
+                marker: { symbol: 'circle', fillColor: '#7cb5ec' }
+            },
+            {
+                name: 'Lowest',
+                data: [67, 59, 50, 47, 51, 60, 66, 66],
+                color: '#333333',
+                marker: { symbol: 'diamond', fillColor: '#333333' }
+            }
+        ],
+        responsive: {
+            rules: [{
+                condition: { maxWidth: 500 },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+    </script>
   </body>
 </html>
