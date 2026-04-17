@@ -45,29 +45,27 @@
         zoom: 13
       });
 
+
+var popupTemplate = {
+    title: "{Name}",
+    actions: [{ id: "find" }],
+    content: [{
+      type: "fields",
+      fieldInfos: [{ fieldName: "Id" }]
+    }]
+  };
+  
       var featureLayer = new FeatureLayer({
         url: "https://services1.arcgis.com/qr14biwnHA6Vis6l/arcgis/rest/services/TAMU_Lot_100_Intersections/FeatureServer",
         
       });
 
+  featureLayer.popupTemplate = popupTemplate;
       map.add(featureLayer);
       
     });
 
-   var popupTemplate= {
-          title: "{Name}",
-          actions: [{
-            id: "find"
-          }],
-          content: [{
-            type: "fields",
-            fieldInfos: [{
-              fieldName: "Id"
-            }]
-          }]
-        }
 
-       featureLayer.popupTemplate = popupTemplate;
   </script>
      </div>
   </body>
